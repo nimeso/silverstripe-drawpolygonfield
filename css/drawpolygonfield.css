@@ -1,0 +1,32 @@
+@CHARSET "ISO-8859-1";
+
+.stacked-images{
+	width:1140px;
+	height:600px;
+	position: relative;
+	border: 1px solid #666;
+	cursor: crosshair;
+}
+
+.stacked-images img{
+	display:block;
+	position: absolute;
+	top:0px;
+	left: 0px;
+	height: 100%;
+}
+
+.stacked-images canvas{
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+#clearpoly{
+	margin-top:10px;
+	margin-bottom: 20px;
+}
+
+.drawHitAreaField .fieldgroup-field{
+	clear: both;	
+}

@@ -1,0 +1,19 @@
+{
+    "name": "nimeso/silverstripe-drawpolygonfield",
+    "description": "Create a polygon shape using HTML5 canvas",
+    "license": "BSD-2",
+    "type": "silverstripe-module",
+    "authors": [
+        {
+            "name": "Jamie Barker",
+            "email": "nimeso@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+
+    },
+    "extra": {
+        "installer-name": "drawpolygonfield"
+    }
+}
