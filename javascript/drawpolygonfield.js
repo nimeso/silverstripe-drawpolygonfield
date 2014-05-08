@@ -11,10 +11,11 @@ function drawInit(){
             radius = 4,
             canDraw = true;
 
-        function canvasPosition(e) {	
+        function canvasPosition(e) {
+        	console.log(jQuery(".cms-content-fields").scrollTop());
             return {
                 x: parseInt(e.clientX - offset.left),
-                y: parseInt(e.clientY - offset.top)
+                y: parseInt(e.clientY - offset.top + jQuery(".cms-content-fields").scrollTop())
             };
         }
         
