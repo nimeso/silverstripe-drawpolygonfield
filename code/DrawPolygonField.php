@@ -18,8 +18,8 @@ class DrawPolygonField extends HiddenField {
 		$jsvars = array(
 			"Name" => $this->name
 		);
-		Requirements::javascriptTemplate("draw_polygon_field/javascript/drawpolygonfield.js", $jsvars);
-		Requirements::css("draw_polygon_field/css/drawpolygonfield.css");
+		Requirements::javascriptTemplate("drawpolygonfield/javascript/drawpolygonfield.js", $jsvars);
+		Requirements::css("drawpolygonfield/css/drawpolygonfield.css");
 		$content = parent::Field();
 		
 		$imgStr = "";
