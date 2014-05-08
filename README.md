@@ -1,10 +1,9 @@
 # SilverStripe Draw Polygon Field
 
-Allows you to draw a polygon shape using HTML5 canvas. The x,y points are saved as a comma deleminated string in the database. It also excepts a ArrayList of Image objects that can be rendered in the background of the canvas.
+Allows you to draw a polygon shape using HTML5 canvas. The x,y points are saved as a comma delimited string in the database. It also excepts a ArrayList of Image objects that can be rendered in the background of the canvas.
 
 ## Usage
 
-In Warehouse.php context:
 ```php
 	// optional images to render
 	$images = ArrayList();
