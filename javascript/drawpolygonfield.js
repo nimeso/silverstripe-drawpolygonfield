@@ -1,10 +1,30 @@
-//jQuery( document ).ready(function() {
-function drawInit(){
-		console.log("yes");
+jQuery(function($) {
+	console.log("jquery loaded");
+	if($.entwine){
+		$.entwine('ss', function($) {
+			$('#PointsPolyCanvas').entwine({
+				onmatch: function() {
+					console.log("onmatch");
+					drawInit();
+				}
+			});
+			
+			$('#PointsPolyCanvas').entwine({
+				redraw: function() {
+					console.log("onredraw");
+					drawInit();
+				}
+			});
+		});
+	}
 	
-        var canvas = document.getElementById("$NamePolyCanvas"),
+});
+
+function drawInit(){
+
+        var canvas = document.getElementById("PointsPolyCanvas"),
             ctx = canvas.getContext("2d"),
-            offset = jQuery("#$NamePolyCanvas").offset(),
+            offset = jQuery("#PointsPolyCanvas").offset(),
             storedLines = [],
             polyLines = [],
             start = {x: 0, y: 0},
@@ -12,7 +32,7 @@ function drawInit(){
             canDraw = true;
 
         function canvasPosition(e) {
-        	console.log(jQuery(".cms-content-fields").scrollTop());
+        	//console.log(jQuery(".cms-content-fields").scrollTop());
             return {
                 x: parseInt(e.clientX - offset.left),
                 y: parseInt(e.clientY - offset.top + jQuery(".cms-content-fields").scrollTop())
@@ -20,8 +40,8 @@ function drawInit(){
         }
         
         
-        if(jQuery("input#Form_ItemEditForm_$Name").val()){
-        	var orgPointsStr = jQuery("input#Form_ItemEditForm_$Name").val();
+        if(jQuery("input#Form_ItemEditForm_Points").val()){
+        	var orgPointsStr = jQuery("input#Form_ItemEditForm_Points").val();
         	var orgPointsRaw = orgPointsStr.split(",");
         	var orgPoints = orgPointsRaw.filter(function(v){return v!==''});
         	
@@ -44,8 +64,10 @@ function drawInit(){
         	draw();
         }
 		
-        jQuery("#$NamePolyCanvas").mousedown(function (e) {
+        jQuery("#PointsPolyCanvas").mousedown(function (e) {
+        	console.log("mouse down");
         	if(canDraw){
+        		console.log("mouse down and can draw");
 	            var pos = canvasPosition(e);
 	            if (hitStartCircle(pos)) {
 	                polyLines.push(storedLines);
@@ -57,7 +79,7 @@ function drawInit(){
 	                storedLines.push(pos);
 	                update(pos);
 	            }
-	            var input = jQuery("input#Form_ItemEditForm_$Name");
+	            var input = jQuery("input#Form_ItemEditForm_Points");
 	            var orgVal = input.val();
 	            input.val(orgVal+pos.x+","+pos.y+",");
         	}
@@ -69,7 +91,7 @@ function drawInit(){
         // Draw completed polylines
         function draw() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            console.log(polyLines);
+           // console.log(polyLines);
             jQuery.each(polyLines, function (idx, polyLine) {
                 fillPolyline(polyLine);
             });
@@ -127,9 +149,10 @@ function drawInit(){
 
         jQuery("#clearpoly").live("click",function () {
             polyLines = [];
-            jQuery("input#Form_ItemEditForm_$Name").val("");
+            jQuery("input#Form_ItemEditForm_Points").val("");
             canDraw = true;
             draw();
         });
 }
+
 //});

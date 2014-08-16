@@ -6,6 +6,7 @@
 	position: relative;
 	border: 1px solid #666;
 	cursor: crosshair;
+	overflow: hidden;
 }
 
 .stacked-images img{
@@ -29,4 +30,8 @@
 
 .drawHitAreaField .fieldgroup-field{
 	clear: both;	
+}
+
+.stacked-images img.level_0{
+	margin-left: -420px;
 }
